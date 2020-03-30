@@ -16,12 +16,13 @@
             android:layout_weight="1.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"></TextView>
+
         <TextView
-            android:text="ma album"
-            android:textSize="30dp"
-            android:layout_weight="4.5"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"></TextView>
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5"
+            android:text="ma album"
+            android:textSize="30dp"></TextView>
         <TextView
             android:text="ten album"
             android:textSize="30dp"
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"></TextView>
     </LinearLayout>
     <ListView
-        android:id="@+id/lv"
+        android:id="@+id/lvmodule"
         android:layout_weight="9"
         android:layout_width="match_parent"
         android:layout_height="0dp"></ListView>

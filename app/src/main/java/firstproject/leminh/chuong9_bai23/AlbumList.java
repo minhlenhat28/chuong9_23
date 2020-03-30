@@ -27,13 +27,26 @@ public class AlbumList extends AppCompatActivity {
     }
     public void addControls(){
         intent = getIntent();
+        lvalbum = new ArrayList<>();
+        Bundle bundle = intent.getBundleExtra("mybundle");
         Log.d("KIem tra 3","qua tao intent albumlist");
-        listView = (ListView) findViewById(R.id.lv);
-        customlistview = new Customlistview(AlbumList.this,R.layout.albumlist);
-        lvalbum = (ArrayList<Album>) intent.getSerializableExtra("List");
-        customlistview.setdata(lvalbum);
-        listView.setAdapter(customlistview);
+        listView = (ListView) findViewById(R.id.lvmodule);                                  //anh xa listview
+        //customlistview = new Customlistview(AlbumList.this,R.layout.itemlistview);
+
+        lvalbum.add(new Album(1,"ma1","Minh"));
+        lvalbum.add(new Album(1,"ma1","Minh"));
+        lvalbum.add(new Album(1,"ma1","Minh"));
+        lvalbum.add(new Album(1,"ma1","Minh"));
+        lvalbum.add(new Album(1,"ma1","Minh"));
+        AlbumAdapter albumAdapter = new AlbumAdapter(this,R.layout.itemlistview,lvalbum);
+        //lvalbum = (ArrayList<Album>) bundle.getSerializable("List");
+        //customlistview.setdata(lvalbum);
+        albumAdapter.setdata(lvalbum);
+        listView.setAdapter(albumAdapter);
         Log.d("KIem tra 4","qua lay lv album intent albumlist");
+        Log.d("Kiem tra listview",String.valueOf(lvalbum.size()));
+       // Log.d("Kiem tra listview",lvalbum.get(0).getMaalbum());
+       // Log.d("Kiem tra listview",lvalbum.get(0).getTenalbum());
     }
     public void addEvent(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,13 +61,15 @@ public class AlbumList extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.d("KIem tra 9","qua stop");
-        getDatafromMain();
+        getDataBackToMain();
     }
 
-    public void getDatafromMain(){
-        intent.putExtra("list",lvalbum);
+    public void getDataBackToMain(){
+       //Bundle bundle = new Bundle();
+        //bundle.putSerializable("list",lvalbum);
+       // intent.putExtra("mybundle",bundle);
         Log.d("KIem tra 10","qua tao getdatafrommain");
-        setResult(115,intent);
+      //  setResult(115,intent);
         Log.d("KIem tra 1","qua tao setresult");
     }
 }

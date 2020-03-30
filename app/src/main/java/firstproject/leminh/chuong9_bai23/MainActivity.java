@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSave(String ma,String ten) {
                         thuma.setText(String.valueOf(albumList.size()));
                         thuten.setText(ten);
-                        albumList.add(new Album(albumList.size()+1,ma,ten));
+                        albumList.add(new Album(albumList.size()+1,ma,ten)); //lay du lieu tu customdialog
                     }
                 });
                 addalbumDialog.show();
@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setDataforAlbumlist(){
         intent = new Intent(MainActivity.this,AlbumList.class);
-        intent.putExtra("List",albumList);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("List",albumList);
+        intent.putExtra("mybundle",bundle);
         startActivityForResult(intent,113);
     }
 
@@ -74,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 113 && resultCode == 115){
-            albumList = (ArrayList<Album>) data.getSerializableExtra("list");
+           // Bundle bundle = data.getBundleExtra("mybundle");
+          //  albumList = (ArrayList<Album>) bundle.getSerializable("list");
+
         }
     }
 }

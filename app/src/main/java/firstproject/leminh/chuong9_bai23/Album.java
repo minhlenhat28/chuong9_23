@@ -1,6 +1,8 @@
 package firstproject.leminh.chuong9_bai23;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
     private int stt;
     private String maalbum;
     private String tenalbum;
